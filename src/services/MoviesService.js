@@ -3,6 +3,10 @@ import { movieAPI } from "./AxiosService.js"
 import { Movie } from "@/models/Movie.js";
 
 class MoviesService {
+  async searchMovies(movieQuery) {
+    const response = await movieAPI.get(`search/movie?query=${movieQuery}`)
+    console.log('SEACRHED MOVIES 🔍🎥', response.data);
+  }
 
   async getMovies() {
     const response = await movieAPI.get('discover/movie')
