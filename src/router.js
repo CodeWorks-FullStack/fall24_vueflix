@@ -17,6 +17,11 @@ const routes = [
     component: loadPage('AboutPage')  // AboutPage.vue is loaded into router-view
   },
   {
+    path: '/search',
+    name: 'Search',
+    component: loadPage('SearchPage')
+  },
+  {
     path: '/account', // when the url looks like http://localhost:8080/account
     name: 'Account',
     component: loadPage('AccountPage'), // AccountPage.vue is loaded into router-view
