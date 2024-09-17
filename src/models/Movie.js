@@ -47,5 +47,3 @@ const data = {
   "vote_average": 7.709,
   "vote_count": 2892
 }
-
-// https://image.tmdb.org/t/p/original

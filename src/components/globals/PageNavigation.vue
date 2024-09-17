@@ -9,7 +9,7 @@ const totalPages = computed(() => AppState.totalPages)
 
 async function changePage(pageNumber) {
   try {
-    // if I have not typed in a search query
+    // if I have not typed in a search query (if I am on the Home Page)
     if (AppState.movieQuery == '') {
       await moviesService.changeDiscoverPage(pageNumber)
     }
