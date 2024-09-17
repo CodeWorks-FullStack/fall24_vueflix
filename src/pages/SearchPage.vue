@@ -37,7 +37,7 @@ async function searchMovies() {
           <div>
             <label for="" class="form-control-label">Movie Title</label>
             <div class="d-flex">
-              <input v-model="editableQuery" type="text" class="form-control flex-grow-1" name="query" id="query"
+              <input v-model="editableQuery" type="text" class="form-control flex-grow-1 gap-1" name="query" id="query"
                 placeholder="Movie Title..." required>
               <button class="btn btn-outline-dark" type="submit">Search</button>
             </div>
@@ -50,6 +50,7 @@ async function searchMovies() {
     </section>
     <section class="row">
       <div v-for="movie in movies" :key="movie.id" class="col-6 col-md-3 mb-3">
+        <!-- NOTE if your component takes in a prop, don't forget to pass down a value! -->
         <MovieCard :movieProp="movie" />
       </div>
     </section>

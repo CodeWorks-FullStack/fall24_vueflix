@@ -9,7 +9,8 @@ import { AppState } from './AppState.js';
     <Navbar />
   </header>
   <main>
-    <!-- NOTE this a bootstrap component that allows us to simulate page navigation -->
+    <!-- NOTE this a vue component that allows us to simulate page navigation -->
+    <!-- NOTE whichever route is currently being used by the router will be injected here -->
     <router-view />
   </main>
   <footer class="bg-dark text-light">

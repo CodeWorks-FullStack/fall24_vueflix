@@ -10,7 +10,6 @@ export default [
   {
     rules: {
       "no-unused-vars": 1,
-      "no-console": "warn",
       "no-debugger": "warn",
       "space-before-function-paren": [
         1,

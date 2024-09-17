@@ -6,16 +6,17 @@ import { moviesService } from '@/services/MoviesService.js';
 import Pop from '@/utils/Pop.js';
 import { computed, onMounted, onUnmounted } from 'vue';
 
-// explicit return
-// const movies = computed(() => { return AppState.movies })
-// implied return
-const movies = computed(() => AppState.movies)
+// const movies = computed(() => { return AppState.movies }) // explicit return
+const movies = computed(() => AppState.movies) // implied return
 
-// NOTE onMounted will run as soon as a component is mounted into the view (is rendered)
+// NOTE onMounted is a lifecycle hook that will run as soon as a component is mounted into the view (is rendered)
+// this fires off as soon as we land on the home page
 onMounted(() => {
   discoverMovies()
 })
 
+// NOTE onUnmounted is a lifecycle hook that will run when the component is no longer mounted into the view (not rendered)
+// this fires off as soon as we leave the home page
 onUnmounted(() => {
   moviesService.clearMovies()
 })
@@ -46,6 +47,9 @@ async function discoverMovies() {
     </section>
     <section class="row">
       <div v-for="movie in movies" :key="movie.id" class="col-6 col-md-3 mb-3">
+        <!-- NOTE movieProp is the name of our prop in the MovieCard.vue component -->
+        <!-- NOTE movie is the value being passed down to the component -->
+        <!-- Every time we iterate over the movies array, we pass down each object to generate a new unique MovieCard -->
         <MovieCard :movieProp="movie" />
       </div>
     </section>

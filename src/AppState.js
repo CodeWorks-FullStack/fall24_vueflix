@@ -10,7 +10,7 @@ export const AppState = reactive({
 
   /** @type {Movie[]} */
   movies: [],
-  currentPage: 0,
+  currentPage: 0, // 0 is a falsy number
   totalPages: 0,
-  movieQuery: ''
+  movieQuery: '' // '' is a falsy string
 })
