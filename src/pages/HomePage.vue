@@ -12,7 +12,9 @@ async function getMovies() {
   try {
     await moviesService.getMovies()
   } catch (error) {
-    Pop.error(error)
+    // Pop.error(error)
+    // NOTE meow!
+    Pop.meow(error)
   }
 }
 
