@@ -1,8 +1,10 @@
 <script setup>
+import { AppState } from '@/AppState.js';
 import { moviesService } from '@/services/MoviesService.js';
 import Pop from '@/utils/Pop.js';
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 
+const movies = computed(() => AppState.movies)
 
 const editableQuery = ref('')
 
@@ -36,6 +38,9 @@ async function searchMovies() {
           </div>
         </form>
       </div>
+    </section>
+    <section class="row">
+      {{ movies }}
     </section>
   </div>
 </template>

@@ -6,6 +6,7 @@ class MoviesService {
   async searchMovies(movieQuery) {
     const response = await movieAPI.get(`search/movie?query=${movieQuery}`)
     console.log('SEACRHED MOVIES 🔍🎥', response.data);
+    this.handleResponseData(response.data)
   }
 
   async getMovies() {
