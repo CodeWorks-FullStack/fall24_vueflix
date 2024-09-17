@@ -1,5 +1,6 @@
 <script setup>
 import { AppState } from '@/AppState.js';
+import MovieCard from '@/components/globals/MovieCard.vue';
 import { moviesService } from '@/services/MoviesService.js';
 import Pop from '@/utils/Pop.js';
 import { computed, onMounted } from 'vue';
@@ -59,10 +60,7 @@ async function changePage(pageNumber) {
     </section>
     <section class="row">
       <div v-for="movie in movies" :key="movie.id" class="col-6 col-md-3 mb-3">
-        <div>
-          <img :src="movie.lowQualityPosterImgUrl" :alt="`Poster for ${movie.title}`" class="img-fluid rounded shadow"
-            :title="movie.title">
-        </div>
+        <MovieCard :movieProp="movie" />
       </div>
     </section>
   </div>

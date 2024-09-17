@@ -1,5 +1,6 @@
 <script setup>
 import { AppState } from '@/AppState.js';
+import MovieCard from '@/components/globals/MovieCard.vue';
 import { moviesService } from '@/services/MoviesService.js';
 import Pop from '@/utils/Pop.js';
 import { computed, ref } from 'vue';
@@ -40,7 +41,9 @@ async function searchMovies() {
       </div>
     </section>
     <section class="row">
-      {{ movies }}
+      <div v-for="movie in movies" :key="movie.id" class="col-6 col-md-3 mb-3">
+        <MovieCard :movieProp="movie" />
+      </div>
     </section>
   </div>
 </template>
