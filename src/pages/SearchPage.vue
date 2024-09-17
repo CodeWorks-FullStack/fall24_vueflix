@@ -1,13 +1,18 @@
 <script setup>
 import { AppState } from '@/AppState.js';
 import MovieCard from '@/components/globals/MovieCard.vue';
+import PageNavigation from '@/components/globals/PageNavigation.vue';
 import { moviesService } from '@/services/MoviesService.js';
 import Pop from '@/utils/Pop.js';
-import { computed, ref } from 'vue';
+import { computed, onUnmounted, ref } from 'vue';
 
 const movies = computed(() => AppState.movies)
 
 const editableQuery = ref('')
+
+onUnmounted(() => {
+  moviesService.clearSearchQuery()
+})
 
 async function searchMovies() {
   try {
@@ -27,7 +32,7 @@ async function searchMovies() {
       <div class="col-12">
         <h1>Search Movies</h1>
       </div>
-      <div class="col-12">
+      <div class="col-12 my-3">
         <form @submit.prevent="searchMovies()">
           <div>
             <label for="" class="form-control-label">Movie Title</label>
@@ -38,6 +43,9 @@ async function searchMovies() {
             </div>
           </div>
         </form>
+      </div>
+      <div class="col-12">
+        <PageNavigation />
       </div>
     </section>
     <section class="row">

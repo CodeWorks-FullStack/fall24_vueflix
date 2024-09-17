@@ -1,27 +1,28 @@
 <script setup>
 import { AppState } from '@/AppState.js';
 import MovieCard from '@/components/globals/MovieCard.vue';
+import PageNavigation from '@/components/globals/PageNavigation.vue';
 import { moviesService } from '@/services/MoviesService.js';
 import Pop from '@/utils/Pop.js';
-import { computed, onMounted } from 'vue';
+import { computed, onMounted, onUnmounted } from 'vue';
 
 // explicit return
 // const movies = computed(() => { return AppState.movies })
 // implied return
 const movies = computed(() => AppState.movies)
-const currentPage = computed(() => AppState.currentPage)
-const totalPages = computed(() => AppState.totalPages)
-
-
 
 // NOTE onMounted will run as soon as a component is mounted into the view (is rendered)
 onMounted(() => {
-  getMovies()
+  discoverMovies()
 })
 
-async function getMovies() {
+onUnmounted(() => {
+  moviesService.clearMovies()
+})
+
+async function discoverMovies() {
   try {
-    await moviesService.getMovies()
+    await moviesService.discoverMovies()
   } catch (error) {
     // Pop.error(error)
     // NOTE meow!
@@ -29,13 +30,7 @@ async function getMovies() {
   }
 }
 
-async function changePage(pageNumber) {
-  try {
-    await moviesService.changeMoviesPage(pageNumber)
-  } catch (error) {
-    Pop.meow(error)
-  }
-}
+
 
 </script>
 
@@ -46,16 +41,7 @@ async function changePage(pageNumber) {
         <h1>Movies</h1>
       </div>
       <div class="col-12">
-        <div class="d-flex gap-3 align-items-center my-3">
-          <button @click="changePage(currentPage - 1)" :disabled="currentPage == 1" class="btn btn-outline-dark">
-            Previous
-          </button>
-          <span class="fs-5">Page {{ currentPage }} of {{ totalPages }}</span>
-          <button @click="changePage(currentPage + 1)" :disabled="currentPage == 500 || currentPage == totalPages"
-            class="btn btn-outline-dark">
-            Next
-          </button>
-        </div>
+        <PageNavigation />
       </div>
     </section>
     <section class="row">
