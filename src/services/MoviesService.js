@@ -9,7 +9,8 @@ class MoviesService {
     const newMovies = response.data.results.map(moviePOJO => new Movie(moviePOJO))
     // REVIEW verify the data looks correct by using your Vue dev tools
     AppState.movies = newMovies
-
+    AppState.currentPage = response.data.page
+    AppState.totalPages = response.data.total_pages
   }
 }
 

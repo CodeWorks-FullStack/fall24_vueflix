@@ -9,6 +9,7 @@ export const AppState = reactive({
   account: null,
 
   /** @type {Movie[]} */
-  movies: []
+  movies: [],
+  currentPage: 0,
+  totalPages: 0
 })
-

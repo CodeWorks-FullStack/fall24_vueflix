@@ -8,6 +8,10 @@ import { computed, onMounted } from 'vue';
 // const movies = computed(() => { return AppState.movies })
 // implied return
 const movies = computed(() => AppState.movies)
+const currentPage = computed(() => AppState.currentPage)
+const totalPages = computed(() => AppState.totalPages)
+
+
 
 // NOTE onMounted will run as soon as a component is mounted into the view (is rendered)
 onMounted(() => {
@@ -32,10 +36,20 @@ async function getMovies() {
       <div class="col-12">
         <h1>Movies</h1>
       </div>
+      <div class="col-12">
+        <div class="d-flex gap-3 align-items-center my-3">
+          <button class="btn btn-outline-dark">Previous</button>
+          <span class="fs-5">Page {{ currentPage }} of {{ totalPages }}</span>
+          <button class="btn btn-outline-dark">Next</button>
+        </div>
+      </div>
     </section>
     <section class="row">
-      <div v-for="movie in movies" :key="movie.id" class="col-3">
-        {{ movie.title }}
+      <div v-for="movie in movies" :key="movie.id" class="col-6 col-md-3 mb-3">
+        <div>
+          <img :src="movie.lowQualityPosterImgUrl" :alt="`Poster for ${movie.title}`" class="img-fluid rounded shadow"
+            :title="movie.title">
+        </div>
       </div>
     </section>
   </div>
