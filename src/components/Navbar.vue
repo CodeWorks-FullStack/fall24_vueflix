@@ -35,6 +35,11 @@ function toggleTheme() {
             About
           </router-link>
         </li>
+        <li>
+          <router-link :to="{ name: 'Search' }" class="btn text-success lighten-30 selectable text-uppercase">
+            Search <i class="mdi mdi-magnify"></i>
+          </router-link>
+        </li>
       </ul>
       <!-- LOGIN COMPONENT HERE -->
       <div>
