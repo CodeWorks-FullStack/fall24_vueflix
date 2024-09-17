@@ -34,7 +34,9 @@ async function getMovies() {
       </div>
     </section>
     <section class="row">
-      {{ movies }}
+      <div v-for="movie in movies" :key="movie.id" class="col-3">
+        {{ movie.title }}
+      </div>
     </section>
   </div>
 </template>
