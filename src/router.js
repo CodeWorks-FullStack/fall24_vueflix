@@ -7,19 +7,19 @@ function loadPage(page) {
 
 const routes = [
   {
-    path: '/',
+    path: '/', // when the url looks like http://localhost:8080/
     name: 'Home',
-    component: loadPage('HomePage')
+    component: loadPage('HomePage') // HomePage.vue is loaded into router-view
   },
   {
-    path: '/about',
+    path: '/about', // when the url looks like http://localhost:8080/about
     name: 'About',
-    component: loadPage('AboutPage')
+    component: loadPage('AboutPage')  // AboutPage.vue is loaded into router-view
   },
   {
-    path: '/account',
+    path: '/account', // when the url looks like http://localhost:8080/account
     name: 'Account',
-    component: loadPage('AccountPage'),
+    component: loadPage('AccountPage'), // AccountPage.vue is loaded into router-view
     beforeEnter: authGuard
   }
 ]

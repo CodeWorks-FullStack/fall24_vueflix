@@ -9,6 +9,7 @@ import { AppState } from './AppState.js';
     <Navbar />
   </header>
   <main>
+    <!-- NOTE this a bootstrap component that allows us to simulate page navigation -->
     <router-view />
   </main>
   <footer class="bg-dark text-light">
@@ -18,6 +19,7 @@ import { AppState } from './AppState.js';
 
 <style lang="scss">
 @import '@/assets/scss/main.scss';
+
 :root {
   --main-height: calc(100vh - 32px - 64px);
 }
