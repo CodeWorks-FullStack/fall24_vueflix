@@ -5,7 +5,7 @@ export class Movie {
     this.title = data.title
     this.originalTitle = data.original_title
     this.overview = data.overview
-    this.posterPath = data.posterPath
+    this.posterPath = data.poster_path
     this.releaseDate = new Date(data.release_date)
     this.voteCount = data.vote_count
     this.voteAverage = data.vote_average
