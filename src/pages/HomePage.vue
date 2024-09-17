@@ -28,9 +28,12 @@ async function getMovies() {
   }
 }
 
-function changePage(pageNumber) {
-  console.log('Moving to page:', pageNumber);
-
+async function changePage(pageNumber) {
+  try {
+    await moviesService.changeMoviesPage(pageNumber)
+  } catch (error) {
+    Pop.meow(error)
+  }
 }
 
 </script>
