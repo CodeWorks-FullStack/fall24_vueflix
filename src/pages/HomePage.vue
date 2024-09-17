@@ -1,7 +1,13 @@
 <script setup>
+import { AppState } from '@/AppState.js';
 import { moviesService } from '@/services/MoviesService.js';
 import Pop from '@/utils/Pop.js';
-import { onMounted } from 'vue';
+import { computed, onMounted } from 'vue';
+
+// explicit return
+// const movies = computed(() => { return AppState.movies })
+// implied return
+const movies = computed(() => AppState.movies)
 
 // NOTE onMounted will run as soon as a component is mounted into the view (is rendered)
 onMounted(() => {
@@ -21,7 +27,16 @@ async function getMovies() {
 </script>
 
 <template>
-  <h1>Movies</h1>
+  <div class="container">
+    <section class="row">
+      <div class="col-12">
+        <h1>Movies</h1>
+      </div>
+    </section>
+    <section class="row">
+      {{ movies }}
+    </section>
+  </div>
 </template>
 
 <style scoped lang="scss"></style>
