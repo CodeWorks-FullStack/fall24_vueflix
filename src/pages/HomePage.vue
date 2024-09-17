@@ -1,4 +1,20 @@
 <script setup>
+import { moviesService } from '@/services/MoviesService.js';
+import Pop from '@/utils/Pop.js';
+import { onMounted } from 'vue';
+
+// NOTE onMounted will run as soon as a component is mounted into the view (is rendered)
+onMounted(() => {
+  getMovies()
+})
+
+async function getMovies() {
+  try {
+    await moviesService.getMovies()
+  } catch (error) {
+    Pop.error(error)
+  }
+}
 
 </script>
 
